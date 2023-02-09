@@ -20,3 +20,20 @@ services:
     tty: true
     volumes:
       - ./backend:/app/go
+  db:
+    build:
+      context: .
+      dockerfile: ./db/Dockerfile
+    container_name: db_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tanni-uru
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/mysql_data:/var/lib/mysql
+    ports:
+    - 3306:3306
+    links:
+      - go
