@@ -1,8 +1,8 @@
 services:
   react:
-    build:
-      context: .
-      dockerfile: ./frontend/Dockerfile
+    build: ./frontend/
+      # context: .
+      # dockerfile: ./frontend/Dockerfile
     container_name: react-app-container
     image: node:16-alpine
     volumes:
@@ -12,8 +12,8 @@ services:
       - '5173:5173'
   go:
     build:
-      context: .
-      dockerfile: ./backend/Dockerfile
+      context: ./backend/
+      # dockerfile: ./backend/Dockerfile
     container_name: go_container
     ports:
       - 8000:8000
@@ -22,8 +22,8 @@ services:
       - ./backend:/app/go
   db:
     build:
-      context: .
-      dockerfile: ./db/Dockerfile
+      context: ./db/
+      # dockerfile: ./db/Dockerfile
     container_name: db_container
     environment:
       MYSQL_ROOT_PASSWORD: root

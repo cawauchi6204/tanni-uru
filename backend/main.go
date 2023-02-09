@@ -1,15 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "github.com/gin-gonic/gin"
 
 func main() {
-	http.HandleFunc("/", echoHello)
-	http.ListenAndServe(":8000", nil)
-}
-
-func echoHello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Hello World</h1>")
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run("0.0.0.0:8000") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
