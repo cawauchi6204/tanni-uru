@@ -6,7 +6,17 @@ services:
     container_name: react-app-container
     image: node:16-alpine
     volumes:
-      - ./frontend/:/app/react
+      - ./frontend:/app/react
     command: sh -c "cd /app/react && npm install && npm run dev"
     ports:
       - '5173:5173'
+  go:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: go_container
+    ports:
+      - 8000:8000
+    tty: true
+    volumes:
+      - ./backend:/app/go
