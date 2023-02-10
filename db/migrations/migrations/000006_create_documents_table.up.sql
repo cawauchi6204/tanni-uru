@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS users(
+  url TEXT UNIQUE NOT NULL,
+  note_id INTEGER (50),
+  created_at TIMESTAMP
+);

@@ -1,15 +1,9 @@
-CREATE TABLE
-  IF NOT EXISTS users(
-    id VARCHAR (50) UNIQUE NOT NULL,
-    name VARCHAR (50) NOT NULL,
-    password VARCHAR (300) NOT NULL,
-    email VARCHAR (300) UNIQUE NOT NULL,
-    img_url TEXT NOT NULL,
-    description TEXT NOT NULL,
-    hp_url VARCHAR(100) NOT NULL,
-    location VARCHAR(50) NOT NULL,
-    github_account VARCHAR(100) NOT NULL,
-    organization_id VARCHAR(50),
-    is_deleted BOOLEAN NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW()
-  );
+CREATE TABLE IF NOT EXISTS users(
+  id serial PRIMARY KEY,
+  name VARCHAR (50) NOT NULL,
+  email VARCHAR (255) NOT NULL,
+  password VARCHAR (16) NOT NULL,
+  college_id INTEGER (50),
+  department_id INTEGER (50),
+  faculty_id INTEGER (50)
+);
